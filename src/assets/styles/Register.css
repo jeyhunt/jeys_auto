@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+.container {
+  font-family: "Inter", sans-serif !important;
+}
+
+h1 {
+  font-weight: bold;
+  font-family: "Inter", sans-serif !important;
+  color: #86c232;
+}
+
+p {
+  color: #86c232;
+}
+
+h5 {
+  color: #86c232;
+}
+
+.signup {
+  font-weight: bold;
+}
+
+.card {
+  box-shadow: 4px 4px 2px #86c232;
+}
+
+.form-control {
+  background-color: transparent;
+  border: solid 1.5px #86c232;
+}
+
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #86c232;
+  opacity: 1; /* Firefox */
+}
+
+.form-control:focus {
+  background-color: transparent;
+  color: #86c232;
+  border: solid 1.5px #86c232;
+}
+
+.card,
+.card-body,
+h5,
+.butt {
+  background-color: #474b4f;
+  color: #86c232;
+}
+
+.butt:hover {
+  color: #9fe73b;
+}
+
+.btn {
+  background-color: #86c232;
+  border: none;
+  color: #222629;
+}
+
+.btn:hover {
+  background-color: #86c232;
+  color: #222629;
+}

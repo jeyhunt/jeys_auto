@@ -1,0 +1,20 @@
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.kartu2 {
+  transition: 0.3s;
+}
+
+.kartu2:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  transform: scale(1.02);
+  transition: 0.3s cubic-bezier(0.6, 0.3, 0.28, 0.98);
+}
+
+.gambar2 {
+  width: 240;
+  height: 320;
+  object-fit: cover;
+}

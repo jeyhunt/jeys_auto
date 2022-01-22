@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+.home-background {
+  background: url("https://images.unsplash.com/photo-1620960324277-e73e32771c18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1625&q=80")
+    center no-repeat !important;
+  height: 100vh;
+  width: 100vw;
+  margin-left: -10px;
+  margin-top: -100px;
+}
+
+.layer {
+  height: 100vh;
+  width: 100vw;
+
+  background: linear-gradient(
+    180deg,
+    rgba(34, 38, 41, 0.99) 12%,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0.1) 60%,
+    rgba(34, 38, 41, 0.1) 80%,
+    rgba(34, 38, 41, 0.99) 100%
+  );
+  /* text-align: center; */
+  padding-top: 240px;
+  padding-left: 50px;
+}
+
+.judul {
+  font-size: 50px !important;
+  font-weight: bold !important;
+  font-family: "Inter", sans-serif;
+}
+
+.title-content {
+  margin-top: -15px;
+  font-family: "Inter", sans-serif;
+}
+
+.custom-btn-buy {
+  background-color: #86c232 !important;
+  font-size: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.custom-btn-buy:hover {
+  background-color: #9fe73b !important;
+}
+
+.sub-content {
+  margin-top: 10px;
+}
+
+.terbaru {
+  /* text-align: center;
+  margin-top: 30px; */
+  color: #86c232 !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+.recent-card {
+  /* margin-top: 10px; */
+  padding: 20px;
+}
+
+.liat-semua {
+  text-decoration: none;
+  color: #86c232;
+  /* padding-bottom: 20px; */
+}
+
+.liat-semua:hover {
+  text-decoration: none;
+  color: #9fe73b;
+}
+
+h6 {
+  font-size: 14px;
+  font-family: "Inter", sans-serif !important;
+  color: #6b6e70;
+}

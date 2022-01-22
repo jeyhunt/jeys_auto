@@ -1,0 +1,233 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "role": "admin",
+      "firstName": "Jeyhan",
+      "lastName": "Kurniawan",
+      "username": "jeykurniawan",
+      "email": "jeykurniawan@admin.com",
+      "password": "jeyadmin"
+    },
+    {
+      "firstName": "rean",
+      "lastName": "purba",
+      "userName": "",
+      "email": "rean@mail.com",
+      "password": "test123",
+      "role": "admin",
+      "id": 2
+    },
+    {
+      "firstName": "rean",
+      "lastName": "purba",
+      "username": "reanpurba",
+      "email": "reanpurba@mail.com",
+      "password": "test123",
+      "role": "admin",
+      "id": 3
+    },
+    {
+      "firstName": "Bill",
+      "lastName": "Gates",
+      "username": "billygates",
+      "email": "gates@microsoft.com",
+      "password": "billybilly",
+      "role": "user",
+      "id": 4
+    },
+    {
+      "firstName": "Mac",
+      "lastName": "Demarco",
+      "username": "demarcomac",
+      "email": "demarco@mail.com",
+      "password": "password",
+      "role": "user",
+      "id": 5
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "productName": "Mercedes-Benz CLA 200 AMG 2022",
+      "price": 860000000,
+      "productImage": "https://www.mercedesrumor.com/wp-content/uploads/2021/06/2022-mercedes-benz-cla-class-cla-amg-35-4matic-awd.jpg",
+      "description": "Merceds Benz CLA 200 AMG Line full option",
+      "brand": "Mercedes-Benz",
+      "condition": "Baru"
+    },
+    {
+      "id": 2,
+      "productName": "Toyota Fortuner GR Sport 2022",
+      "price": 500000000,
+      "productImage": "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1591287859/oqfwf4d29wp8yeji0glu.png",
+      "description": "Toyota Fortuner GR Sport 2022 full option",
+      "brand": "Toyota",
+      "condition": "Baru"
+    },
+    {
+      "id": 3,
+      "productName": "Mitsubishi Pajero Sport Dakar 2016",
+      "price": 300000000,
+      "productImage": "https://images.bisnis-cdn.com/posts/2021/04/03/1376115/pajero-sport-dakar-ultimate-4x2.jpg",
+      "description": "Mitsubishi Pajero Sport Dakar 2016 Automatic condition baik",
+      "brand": "Mitsubishi",
+      "condition": "Bekas"
+    },
+    {
+      "id": 4,
+      "productName": "Tesla Model S Plaid 2022",
+      "price": 2000000000,
+      "productImage": "https://cdn.motor1.com/images/mgl/gLEpE/s1/tesla-model-s-plaid-in-red.webp",
+      "description": "Tesla Model S Plaid 2022 seri paling tinggi",
+      "brand": "tesla",
+      "condition": "Baru"
+    },
+    {
+      "id": 5,
+      "productName": "BMW X1 sDrive18i xLine 2022",
+      "price": 800000000,
+      "productImage": "https://www.bmwastrasunter.com/wp-content/uploads/2020/07/BMW_Astra_Sunter_Home_Thumbnail-01.jpg",
+      "description": "BMW X1 sDrive18i xLine tahun 2022",
+      "brand": "BMW",
+      "condition": "Baru"
+    },
+    {
+      "id": 6,
+      "productName": "Mercedes-Benz C63 AMG Black Series 2012",
+      "price": 3000000000,
+      "productImage": "https://carnetwork.s3.ap-southeast-1.amazonaws.com/file/842ee8ec9c5141dbac88fbb565845ee6.jpg",
+      "description": "C63 AMG Black Series 2dr Coupe 6.2L 8cyl 7A",
+      "brand": "Mercedes-Benz",
+      "condition": "Bekas"
+    },
+    {
+      "id": 7,
+      "productName": "Toyota All New Corolla Cross Hybrid 2022",
+      "price": 500000000,
+      "productImage": "https://www.toyota.astra.co.id/sites/default/files/2021-11/corolla-cross-hybrid.png",
+      "description": "Toyota All New Corolla Cross Hybrid 2022",
+      "brand": "Toyota",
+      "condition": "Baru"
+    },
+    {
+      "id": 8,
+      "productName": "Mitsubishi Xpander Cross 2018",
+      "price": 200000000,
+      "productImage": "https://res.cloudinary.com/mufautoshow/image/upload/f_auto,f_auto/w_1200/v1608086376/moas/news/1605461108_mitsubishi-xpander-cross-kelebihan-spesifikasi-dan-harga.jpg",
+      "description": "Mitsubishi Xpander Cross 2018 like new",
+      "brand": "Mitsubishi",
+      "condition": "Bekas"
+    },
+    {
+      "id": 9,
+      "productName": "Tesla Model 3 2019",
+      "price": 1000000000,
+      "productImage": "https://pict-c.sindonews.net/dyn/620/pena/news/2020/11/12/120/229272/apa-keunggulan-model-3-tesla-termurah-rp15-miliar-yang-bisa-dibeli-online-qqp.jpg",
+      "description": "Tesla Model 3 Putih 2019 Low KM",
+      "brand": "Tesla",
+      "condition": "Bekas"
+    },
+    {
+      "id": 10,
+      "productName": "BMW M5 E60 2010",
+      "price": 1200000000,
+      "productImage": "https://drive-my.com/wp-content/uploads/importedmedia/1116",
+      "description": "BMW M5 Competition Pack low KM",
+      "brand": "BMW",
+      "condition": "Bekas"
+    },
+    {
+      "id": 11,
+      "productName": "Mercedes-Benz S450 4MATIC Luxury 2022",
+      "price": 2500000000,
+      "productImage": "https://imgd.aeplcdn.com/1056x594/n/cnugbua_1541067.jpg?q=85&wm=1",
+      "description": "Merceds Benz S Class S450",
+      "brand": "Mercedes-Benz",
+      "condition": "Baru"
+    },
+    {
+      "id": 12,
+      "productName": "Toyota Yaris GR 2022",
+      "price": 700000000,
+      "productImage": "https://media.suara.com/pictures/653x366/2021/08/19/67957-toyota-gr-yaris-02.jpg",
+      "description": "Toyota Yaris GR 2022 Putih",
+      "brand": "Toyota",
+      "condition": "Baru"
+    },
+    {
+      "id": 13,
+      "productName": "Mitsubishi Eclipse Cross 2022",
+      "price": 500000000,
+      "productImage": "https://cdn.motor1.com/images/mgl/G3y1mx/s3/mitsubishi-eclipse-cross-ralliart-style.webp",
+      "description": "Mitsubishi Eclipe Cross 2022 Rally",
+      "brand": "Mitsubishi",
+      "condition": "Baru"
+    },
+    {
+      "id": 14,
+      "productName": "Tesla Model X Plaid 2022",
+      "price": 2500000000,
+      "productImage": "https://pict-b.sindonews.net/dyn/620/pena/news/2021/02/02/120/321436/gisel-beli-tesla-model-x-rp3-miliar-untuk-antar-gempi-sekolah-div.png",
+      "description": "Tesla Model X Ready Stock",
+      "brand": "Tesla",
+      "condition": "Baru"
+    },
+    {
+      "id": 15,
+      "productName": "BMW X5M 2022",
+      "price": 1700000000,
+      "productImage": "https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/bmw-x5-my22-index-1.png",
+      "description": "BMW X5 Navy Blue",
+      "brand": "BMW",
+      "condition": "Baru"
+    },
+    {
+      "id": 16,
+      "productName": "Mercedes-Benz E 300 AMG 2022",
+      "price": 1275000000,
+      "productImage": "https://www.autocar.co.uk/sites/autocar.co.uk/files/images/car-reviews/first-drives/legacy/18c0838_114_0.jpg",
+      "description": "Merceds Benz E300 Facelift AMG Line",
+      "brand": "Mercedes-Benz",
+      "condition": "Baru"
+    },
+    {
+      "id": 17,
+      "productName": "Toyota GR Supra 2018",
+      "price": 1400000000,
+      "productImage": "https://imgcdnblog.carbay.com/wp-content/uploads/2020/01/15174438/2020-Toyota-GR-Supra-4-cyl-turbo.jpg",
+      "description": "Toyota GR Supra 2018 Red Kondisi Mint",
+      "brand": "Toyota",
+      "condition": "Bekas"
+    },
+    {
+      "id": 18,
+      "productName": "Mitsubishi Lancer Evolution X 2009",
+      "price": 600000000,
+      "productImage": "https://imgx.gridoto.com/crop/0x0:0x0/700x465/photo/2020/07/15/2379811896.jpg",
+      "description": "Mitsubishi Lancer Evo final edition",
+      "brand": "Mitsubishi",
+      "condition": "Bekas"
+    },
+    {
+      "id": 19,
+      "productName": "Tesla Cybertruck 2022",
+      "price": 5000000000,
+      "productImage": "https://akcdn.detik.net.id/visual/2021/08/10/tesla-cybertruck-4_169.jpeg?w=650",
+      "description": "Tesla Cybertruck Elon Musk Edition",
+      "brand": "Tesla",
+      "condition": "Baru"
+    },
+    {
+      "id": 20,
+      "productName": "BMW E46 M3 CSL 2001",
+      "price": 850000000,
+      "productImage": "https://mediapool.bmwgroup.com/cache/P9/201604/P90215419/P90215419-e46-bmw-m3-csl-04-2016-2253px.jpg",
+      "description": "BMW E46 M3 NFS Underground Edition",
+      "brand": "BMW",
+      "condition": "Bekas"
+    }
+  ],
+  "transactions": [],
+  "carts": []
+}

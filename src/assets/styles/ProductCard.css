@@ -1,0 +1,23 @@
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.kartu {
+  padding: 16px;
+  border-radius: 8px;
+  transition: 0.3s;
+  box-sizing: border-box;
+  width: 280px;
+}
+
+.kartu:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  transition: 0.3s cubic-bezier(0.6, 0.3, 0.28, 0.98);
+}
+
+.gambar {
+  width: 100%;
+  height: 12vw;
+  object-fit: cover;
+}
