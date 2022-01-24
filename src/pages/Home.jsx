@@ -26,7 +26,7 @@ class Home extends React.Component {
   };
 
   renderProducts = () => {
-    const itemPerPage = 16;
+    const itemPerPage = -4;
     const currentData = this.state.productList.slice(itemPerPage);
     return currentData.map((val) => {
       return <ProductCard productData={val} />;

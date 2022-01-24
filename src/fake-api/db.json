@@ -44,6 +44,15 @@
       "password": "password",
       "role": "user",
       "id": 5
+    },
+    {
+      "firstName": "Mason",
+      "lastName": "Mount",
+      "username": "moneymase",
+      "email": "mount@chelsea.co.uk",
+      "password": "password",
+      "role": "user",
+      "id": 6
     }
   ],
   "products": [
@@ -226,6 +235,42 @@
       "description": "BMW E46 M3 NFS Underground Edition",
       "brand": "BMW",
       "condition": "Bekas"
+    },
+    {
+      "productName": "Mercedes-Benz G63 AMG Black 2021",
+      "price": 4000000000,
+      "productImage": "https://www.tuningblog.eu/wp-content/uploads/2019/11/HR-Sportfedern-Mercedes-G63-AMG-W463A-W464-2.jpg",
+      "description": "MB G63 AMG 2021 Black New Old Stock",
+      "brand": "Mercedes-Benz",
+      "condition": "Bekas",
+      "id": 21
+    },
+    {
+      "productName": "Toyota GR86 Red 2022",
+      "price": 1300000000,
+      "productImage": "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1617700316/je52xqczryuucbviwonm.png",
+      "description": "All New Toyota GR 86 Red",
+      "brand": "Toyota",
+      "condition": "Baru",
+      "id": 22
+    },
+    {
+      "productName": "BMW M8 Grand Coupe Silver 2020",
+      "price": 2300000000,
+      "productImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/BMW_M8_Gran_Coupe_Competition_IMG_3373.jpg/1280px-BMW_M8_Gran_Coupe_Competition_IMG_3373.jpg",
+      "description": "BMW M8 Grand Coupe Silver 2020 Low KM",
+      "brand": "BMW",
+      "condition": "Bekas",
+      "id": 23
+    },
+    {
+      "productName": "mobil 1",
+      "price": 200000000,
+      "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh3sGFPpqVmqWs0cKs4143WmR4A96TfCPT2w&usqp=CAU",
+      "description": "test mobil 1",
+      "brand": "Toyota",
+      "condition": "Baru",
+      "id": 24
     }
   ],
   "transactions": [],

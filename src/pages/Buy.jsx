@@ -115,6 +115,15 @@ class Buy extends React.Component {
     });
   };
 
+  resetBtnHandler = () => {
+    this.fetchProducts();
+    this.setState({
+      searchProductName: "",
+      searchBrand: "",
+      searchCondition: "",
+    });
+  };
+
   componentDidMount() {
     this.fetchProducts();
   }
@@ -162,6 +171,7 @@ class Buy extends React.Component {
                 <i class="fas fa-search"></i>
               </button>
               <button
+                onClick={this.resetBtnHandler}
                 className="reset btn mt-3 ms-5"
                 style={{ backgroundColor: "transparent", color: "#86c232" }}
               >

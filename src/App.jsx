@@ -8,7 +8,6 @@ import { Container } from "react-bootstrap";
 
 import Home from "./pages/Home";
 import Buy from "./pages/Buy";
-import Sell from "./pages/Sell";
 import ProductDetail from "./pages/ProductDetail";
 import Contact from "./pages/Contact";
 import Login from "./pages/Auth/Login";
@@ -48,7 +47,6 @@ class App extends React.Component {
               <BrowserRouter>
                 <Routes>
                   <Route element={<Buy />} path="/buy" />
-                  <Route element={<Sell />} path="/sell" />
                   <Route element={<Contact />} path="/contact" />
                   <Route element={<ProductDetail />} path="/product-detail" />
                   <Route element={<Login />} path="/login" />

@@ -12,7 +12,7 @@ class ProductCardBuy extends React.Component {
           <div class="col-md-4">
             <img
               src={this.props.productData.productImage}
-              class="img-fluid rounded-start gambar2"
+              class="img-fluid rounded-start gambar2 align-items-center"
               alt="..."
             />
           </div>
