@@ -255,22 +255,13 @@
       "id": 22
     },
     {
-      "productName": "BMW M8 Grand Coupe Silver 2020",
+      "productName": "BMW M8 Grand Coupe Grey 2020",
       "price": 2300000000,
       "productImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/BMW_M8_Gran_Coupe_Competition_IMG_3373.jpg/1280px-BMW_M8_Gran_Coupe_Competition_IMG_3373.jpg",
-      "description": "BMW M8 Grand Coupe Silver 2020 Low KM",
+      "description": "BMW M8 Grand Coupe Grey 2020 Low KM",
       "brand": "BMW",
       "condition": "Bekas",
       "id": 23
-    },
-    {
-      "productName": "mobil 1",
-      "price": 200000000,
-      "productImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh3sGFPpqVmqWs0cKs4143WmR4A96TfCPT2w&usqp=CAU",
-      "description": "test mobil 1",
-      "brand": "Toyota",
-      "condition": "Baru",
-      "id": 24
     }
   ],
   "transactions": [],

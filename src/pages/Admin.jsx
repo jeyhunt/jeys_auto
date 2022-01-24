@@ -1,6 +1,10 @@
 import React from "react";
 import Axios from "axios";
 import { API_URL } from "../constants/api";
+import { connect } from "react-redux";
+import { Navigate } from "react-router-dom";
+
+import "../assets/styles/Admin.css";
 
 class Admin extends React.Component {
   state = {
@@ -11,6 +15,15 @@ class Admin extends React.Component {
     addDescription: "",
     addBrand: "",
     addCondition: "",
+
+    editId: 0,
+
+    editProductName: "",
+    editPrice: 0,
+    editProductImage: "",
+    editDescription: "",
+    editBrand: "",
+    editCondition: "",
   };
 
   fetchProducts = () => {
@@ -23,8 +36,144 @@ class Admin extends React.Component {
       });
   };
 
+  editToggle = (editData) => {
+    this.setState({
+      editId: editData.id,
+      editProductName: editData.productName,
+      editPrice: editData.price,
+      editProductImage: editData.productImage,
+      editDescription: editData.description,
+      editBrand: editData.brand,
+      editCondition: editData.condition,
+    });
+  };
+
+  cancelEdit = () => {
+    this.setState({ editId: 0 });
+  };
+
+  saveBtnHandler = () => {
+    Axios.patch(`${API_URL}/products/${this.state.editId}`, {
+      productName: this.state.editProductName,
+      price: +this.state.editPrice,
+      productImage: this.state.editProductImage,
+      description: this.state.editDescription,
+      brand: this.state.editBrand,
+      condition: this.state.editCondition,
+    })
+      .then(() => {
+        this.fetchProducts();
+        this.cancelEdit();
+      })
+      .catch(() => {
+        alert(`Terjadi kesalahan di server`);
+      });
+  };
+
+  deleteBtnHandler = (deleteId) => {
+    const confirmDelete = window.confirm(
+      "Are You Sure Want to Delete this Car?"
+    );
+    if (confirmDelete) {
+      Axios.delete(`${API_URL}/products/${deleteId}`)
+        .then(() => {
+          this.fetchProducts();
+        })
+        .catch(() => {
+          alert(`Terjadi kesalahan di server`);
+        });
+    } else {
+      alert(`Delete Canceled`);
+    }
+  };
+
   renderProducts = () => {
     return this.state.productList.map((val) => {
+      if (val.id === this.state.editId) {
+        return (
+          <tr style={{ backgroundColor: "#474b4f" }}>
+            <td>{val.id}</td>
+            <td>
+              <input
+                value={this.state.editProductName}
+                onChange={this.inputHandler}
+                type="text"
+                className="form-control"
+                name="editProductName"
+              />
+            </td>
+            <td>
+              <input
+                value={this.state.editPrice}
+                onChange={this.inputHandler}
+                type="number"
+                className="form-control nomer"
+                name="editPrice"
+              />
+            </td>
+            <td>
+              <input
+                value={this.state.editProductImage}
+                onChange={this.inputHandler}
+                type="text"
+                className="form-control"
+                name="editProductImage"
+              />
+            </td>
+            <td>
+              <input
+                value={this.state.editDescription}
+                onChange={this.inputHandler}
+                type="text"
+                className="form-control"
+                name="editDescription"
+              />
+            </td>
+            <td>
+              <select
+                value={this.state.editBrand}
+                name="editBrand"
+                className="form-control"
+                style={{ color: "#86c232" }}
+              >
+                <option value="">All Brand</option>
+                <option value="BMW">BMW</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                <option value="Mitsubishi">Mitsubishi</option>
+                <option value="Tesla">Tesla</option>
+                <option value="Toyota">Toyota</option>
+              </select>
+            </td>
+            <td>
+              <select
+                value={this.state.editCondition}
+                name="editCondition"
+                className="form-control"
+                style={{ color: "#86c232" }}
+              >
+                <option value="">All Condition</option>
+                <option value="Baru">Baru</option>
+                <option value="Bekas">Bekas</option>
+              </select>
+            </td>
+            <td>
+              <button onClick={this.saveBtnHandler} className="btn">
+                <i class="far fa-save"></i>
+              </button>
+            </td>
+            <td>
+              <button
+                onClick={this.cancelEdit}
+                className="btn"
+                style={{ backgroundColor: "red" }}
+              >
+                <i class="far fa-window-close"></i>
+              </button>
+            </td>
+          </tr>
+        );
+      }
+
       return (
         <tr style={{ backgroundColor: "#474b4f" }}>
           <td>{val.id}</td>
@@ -41,12 +190,16 @@ class Admin extends React.Component {
           <td>{val.brand}</td>
           <td>{val.condition}</td>
           <td>
-            <button className="btn">
+            <button onClick={() => this.editToggle(val)} className="btn">
               <i class="fas fa-edit"></i>
             </button>
           </td>
           <td>
-            <button className="btn" style={{ backgroundColor: "red" }}>
+            <button
+              onClick={() => this.deleteBtnHandler(val.id)}
+              className="btn"
+              style={{ backgroundColor: "red" }}
+            >
               <i class="fas fa-trash"></i>
             </button>
           </td>
@@ -90,6 +243,9 @@ class Admin extends React.Component {
   }
 
   render() {
+    if (this.props.userGlobal.role !== "admin") {
+      return <Navigate to="/" />;
+    }
     return (
       <div className="p-5">
         <div className="row">
@@ -199,4 +355,10 @@ class Admin extends React.Component {
   }
 }
 
-export default Admin;
+const mapStateToProps = (state) => {
+  return {
+    userGlobal: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(Admin);
