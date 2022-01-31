@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Axios from "axios";
-import { API_URL } from "../../constants/api";
 import { registerUser } from "../../redux/actions/user";
 import { connect } from "react-redux";
 
@@ -14,33 +12,76 @@ class Register extends React.Component {
     lastName: "",
     username: "",
     email: "",
+    emailError: false,
     password: "",
+    passwordError: false,
     role: "",
   };
 
   inputHandler = (event) => {
-    const value = event.target.value;
     const name = event.target.name;
+    const value = event.target.value;
     this.setState({ [name]: value });
+
+    this.validateHandler(name);
+  };
+
+  validateHandler = (field) => {
+    console.log("test");
+    if (field === "email") {
+      const email = document.getElementById("mail").value;
+      const emailRGEX =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      const emailResult = emailRGEX.test(email);
+
+      if (emailResult === false) {
+        console.log(`please input valid email address`);
+        this.setState({ emailError: true });
+      } else {
+        this.setState({ emailError: false });
+      }
+    }
+
+    if (field === "password") {
+      // validation buat password
+      const password = document.getElementById("pass").value;
+      const passwordRGEX =
+        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
+      const passwordResult = passwordRGEX.test(password);
+
+      if (passwordResult === false) {
+        console.log(
+          `Password must contain at least eight characters, at least one number and both lower and uppercase letters, and special characters`
+        );
+        this.setState({ passwordError: true });
+      } else {
+        this.setState({ passwordError: false });
+      }
+    }
   };
 
   registerHandler = () => {
-    const { firstName, lastName, username, email, password } = this.state;
+    // cek validasi
 
-    Axios.post(`${API_URL}/users`, {
-      firstName,
-      lastName,
-      username,
-      email,
-      password,
-      role: "user",
-    })
-      .then(() => {
-        alert(`berhasil mendaftarkan user`);
-      })
-      .catch(() => {
-        alert(`gagal mendaftarkan user`);
-      });
+    if (this.state.emailError === true) {
+      return false;
+    }
+    if (this.state.passwordError === true) {
+      return false;
+    }
+
+    // this.props.registeruser
+    this.props.registerUser(this.state);
+  };
+
+  showPasswordHandler = () => {
+    const show = document.getElementById("pass");
+
+    if (show.type === "password") {
+      show.type = "text";
+    } else {
+      show.type = "password";
+    }
   };
 
   render() {
@@ -79,6 +120,7 @@ class Register extends React.Component {
                 <input
                   onChange={this.inputHandler}
                   name="username"
+                  id="user"
                   type="text"
                   placeholder="Username"
                   className="shadow-none form-control my-2"
@@ -87,22 +129,49 @@ class Register extends React.Component {
                 <input
                   onChange={this.inputHandler}
                   name="email"
-                  type="text"
+                  id="mail"
+                  type="email"
                   placeholder="Email"
                   className="shadow-none form-control my-2"
                   style={{ color: "#61892f" }}
                 />
-                <input
-                  onChange={this.inputHandler}
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  className="shadow-none form-control my-2"
-                  style={{ color: "#61892f" }}
-                />
+                {this.state.emailError ? (
+                  <p style={{ color: "red", fontSize: "13px" }}>
+                    please input valid email address
+                  </p>
+                ) : null}
+                <div className="input-group my-2">
+                  <input
+                    onChange={this.inputHandler}
+                    name="password"
+                    id="pass"
+                    type="password"
+                    placeholder="Password"
+                    className="shadow-none form-control"
+                    style={{ color: "#61892f" }}
+                  />
+                  <button
+                    className="btn far fa-eye"
+                    style={{
+                      height: "38px",
+                      backgroundColor: "transparent",
+                      border: "1px solid #86c232",
+                    }}
+                    onClick={this.showPasswordHandler}
+                  ></button>
+                </div>
+
+                {this.state.passwordError ? (
+                  <p style={{ color: "red", fontSize: "13px" }}>
+                    Password must contain at least eight characters, at least
+                    one number and both lower and uppercase letters, and special
+                    characters
+                  </p>
+                ) : null}
+
                 <div className="butt d-flex flex-row justify-content-between align-items-center">
                   <button
-                    onClick={() => this.props.registerUser(this.state)}
+                    onClick={this.registerHandler}
                     className="btn btn-primary mt-2"
                   >
                     Sign Up
@@ -114,6 +183,7 @@ class Register extends React.Component {
                     Sign In
                   </Link>
                 </p>
+                <p>{() => this.registerHandler}</p>
               </div>
             </div>
           </div>

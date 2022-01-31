@@ -1,5 +1,6 @@
 import Button from "@restart/ui/esm/Button";
 import React from "react";
+import logo from "../assets/images/logojey.png";
 
 import { Navbar, NavbarBrand, NavItem, Nav, Dropdown } from "react-bootstrap";
 
@@ -19,7 +20,7 @@ class MyNavbar extends React.Component {
       >
         <NavbarBrand className="ms-3 mt-1">
           <img
-            src="https://document-export.canva.com/5Aybg/DAE1xM5Aybg/33/preview/0001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20220119%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20220119T203147Z&X-Amz-Expires=60260&X-Amz-Signature=886a0ff01c056a04f5011691c3d7dbd1b9f954bbad4435a41d8bf2afcc9dcd69&X-Amz-SignedHeaders=host&response-expires=Thu%2C%2020%20Jan%202022%2013%3A16%3A07%20GMT"
+            src={logo}
             width="70"
             height="70"
             className="d-inline-block align-center"
@@ -58,8 +59,8 @@ class MyNavbar extends React.Component {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className="dropdown-menu">
-                    <Dropdown.Item className="dropdown-isi" href="#/action-1">
-                      Cart
+                    <Dropdown.Item className="dropdown-isi" href="/cart">
+                      Cart ({this.props.cartGlobal.cartList.length})
                     </Dropdown.Item>
                     <Dropdown.Item className="dropdown-isi" href="#/action-2">
                       History
@@ -102,6 +103,7 @@ class MyNavbar extends React.Component {
 const mapStateToProps = (state) => {
   return {
     userGlobal: state.user,
+    cartGlobal: state.cart,
   };
 };
 

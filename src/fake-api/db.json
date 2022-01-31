@@ -53,6 +53,33 @@
       "password": "password",
       "role": "user",
       "id": 6
+    },
+    {
+      "firstName": "jeytes",
+      "lastName": "tesjey",
+      "username": "jeytesjey12",
+      "email": "jeytesjey12@gmail.com",
+      "password": "P4ssw0rD!",
+      "role": "user",
+      "id": 7
+    },
+    {
+      "firstName": "jey",
+      "lastName": "purwadhika",
+      "username": "jeypurwadhika",
+      "email": "jeypurwadhika@purwadhika.com",
+      "password": "P4ssw0rD!",
+      "role": "user",
+      "id": 8
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "username": "",
+      "email": "asdawdawd",
+      "password": "asdawdawdasd",
+      "role": "user",
+      "id": 9
     }
   ],
   "products": [
@@ -60,8 +87,8 @@
       "id": 1,
       "productName": "Mercedes-Benz CLA 200 AMG 2022",
       "price": 860000000,
-      "productImage": "https://www.mercedesrumor.com/wp-content/uploads/2021/06/2022-mercedes-benz-cla-class-cla-amg-35-4matic-awd.jpg",
-      "description": "Merceds Benz CLA 200 AMG Line full option",
+      "productImage": "https://pbs.twimg.com/media/EQ_HrKsWoAU_a2k.jpg",
+      "description": "All New Mercedes-Benz CLA 200 2022 AMG Red Engine: 1332cc Power: 163Hp Top Speed: 229 km/h Free 5 Years Service*",
       "brand": "Mercedes-Benz",
       "condition": "Baru"
     },
@@ -69,8 +96,8 @@
       "id": 2,
       "productName": "Toyota Fortuner GR Sport 2022",
       "price": 500000000,
-      "productImage": "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1591287859/oqfwf4d29wp8yeji0glu.png",
-      "description": "Toyota Fortuner GR Sport 2022 full option",
+      "productImage": "https://carmudi-journal.icarcdn.com/carmudi-id/wp-content/uploads/2021/08/09222848/Harga-Toyota-Fortuner-GR-Sport.jpg",
+      "description": "Toyota Fortuner GR Sport 2022 Black Engine: 2393cc Diesel VNT Intercooler Power: 150Hp Top Speed: 200 km/h Free 2 Years Service* ",
       "brand": "Toyota",
       "condition": "Baru"
     },
@@ -78,8 +105,8 @@
       "id": 3,
       "productName": "Mitsubishi Pajero Sport Dakar 2016",
       "price": 300000000,
-      "productImage": "https://images.bisnis-cdn.com/posts/2021/04/03/1376115/pajero-sport-dakar-ultimate-4x2.jpg",
-      "description": "Mitsubishi Pajero Sport Dakar 2016 Automatic condition baik",
+      "productImage": "https://otodriver.com/image/load/749/421/gallery/mitsubishi-all-new-pajero-sport-dakar-panning3525.jpg",
+      "description": "Mitsubishi Pajero Sport Ultimate Dakar 2016 Silver 4x4 Automatic condition baik",
       "brand": "Mitsubishi",
       "condition": "Bekas"
     },

@@ -24,12 +24,19 @@ class Admin extends React.Component {
     editDescription: "",
     editBrand: "",
     editCondition: "",
+
+    page: 1,
+    maxPage: 0,
+    itemPerPage: 5,
   };
 
   fetchProducts = () => {
     Axios.get(`${API_URL}/products`)
       .then((result) => {
-        this.setState({ productList: result.data });
+        this.setState({
+          productList: result.data,
+          maxPage: Math.ceil(result.data.length / this.state.itemPerPage),
+        });
       })
       .catch(() => {
         alert(`Terjadi kesalahan di server`);
@@ -87,8 +94,22 @@ class Admin extends React.Component {
     }
   };
 
+  nextPageHandler = () => {
+    this.setState({ page: this.state.page + 1 });
+  };
+
+  prevPageHandler = () => {
+    this.setState({ page: this.state.page - 1 });
+  };
+
   renderProducts = () => {
-    return this.state.productList.map((val) => {
+    const beginningIndex = (this.state.page - 1) * this.state.itemPerPage;
+    const currentData = this.state.productList.slice(
+      beginningIndex,
+      beginningIndex + this.state.itemPerPage
+    );
+
+    return currentData.map((val) => {
       if (val.id === this.state.editId) {
         return (
           <tr style={{ backgroundColor: "#474b4f" }}>
@@ -348,6 +369,27 @@ class Admin extends React.Component {
                 </tr>
               </tfoot>
             </table>
+          </div>
+          <div className="mt-4 d-flex flex-column align-items-center">
+            <div className="d-flex flex-row align-items-center">
+              <button
+                disabled={this.state.page === 1}
+                className="btn"
+                onClick={this.prevPageHandler}
+              >
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div className="text-center mx-3" style={{ color: "#86c232" }}>
+                Page {this.state.page} of {this.state.maxPage}
+              </div>
+              <button
+                disabled={this.state.page === this.state.maxPage}
+                className="btn"
+                onClick={this.nextPageHandler}
+              >
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "@restart/ui/esm/Button";
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/styles/ProductCard.css";
@@ -16,9 +17,14 @@ class ProductCard extends React.Component {
         />
 
         <Card.Body>
-          <Card.Title className="fw-bold fs-5" style={{ color: "#86c232" }}>
-            {this.props.productData.productName}
-          </Card.Title>
+          <Link
+            to={`/product-detail?${this.props.productData.id}`}
+            style={{ textDecoration: "none" }}
+          >
+            <Card.Title className="fw-bold fs-5" style={{ color: "#86c232" }}>
+              {this.props.productData.productName}
+            </Card.Title>
+          </Link>
           <Card.Text style={{ color: "#86c232" }}>
             IDR {this.props.productData.price.toLocaleString()}
           </Card.Text>
@@ -29,7 +35,7 @@ class ProductCard extends React.Component {
             className="btn"
             style={{ backgroundColor: "#86c232", color: "#222629" }}
           >
-            Buy
+            Details
           </Button>
         </Card.Body>
       </Card>
