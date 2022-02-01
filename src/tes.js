@@ -26,3 +26,6 @@ const validTest = (email, password) => {
 };
 
 console.log(validTest("jasdasdwad@asdwad.com", "P4ssW0rd!"));
+
+const d = new Date();
+console.log(`${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`);

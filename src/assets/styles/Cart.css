@@ -1,0 +1,19 @@
+.recipient {
+  margin-top: -20px;
+}
+
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #86c232;
+  opacity: 1; /* Firefox */
+}
+
+.form-control:focus {
+  background-color: transparent;
+  color: #86c232;
+  border: solid 1.5px #86c232;
+}
+
+table {
+  box-shadow: 4px 4px 2px #86c232;
+}

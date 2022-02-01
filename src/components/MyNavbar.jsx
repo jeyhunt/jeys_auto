@@ -36,7 +36,7 @@ class MyNavbar extends React.Component {
               <p className="tautan">Collections</p>
             </Nav.Link>
             <Nav.Link href="/contact">
-              <p className="tautan">About Us</p>
+              <p className="tautan">Contact</p>
             </Nav.Link>
           </NavItem>
         </Nav>
@@ -62,7 +62,7 @@ class MyNavbar extends React.Component {
                     <Dropdown.Item className="dropdown-isi" href="/cart">
                       Cart ({this.props.cartGlobal.cartList.length})
                     </Dropdown.Item>
-                    <Dropdown.Item className="dropdown-isi" href="#/action-2">
+                    <Dropdown.Item className="dropdown-isi" href="/history">
                       History
                     </Dropdown.Item>
                     {this.props.userGlobal.role === "admin" ? (

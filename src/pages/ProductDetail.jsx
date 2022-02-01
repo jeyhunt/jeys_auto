@@ -3,6 +3,7 @@ import Axios from "axios";
 import { API_URL } from "../constants/api";
 import { connect } from "react-redux";
 import { getCartData } from "../redux/actions/cartAction";
+import { Navigate } from "react-router-dom";
 
 import "../assets/styles/ProductDetail.css";
 
@@ -87,6 +88,10 @@ class ProductDetail extends React.Component {
 
   render() {
     // console.log(this.state);
+
+    if (this.props.userGlobal.role !== "user") {
+      return <Navigate to="/login" />;
+    }
 
     return (
       <div className="top-section d-flex flex-row justify-content-center mt-5">

@@ -156,6 +156,7 @@ class Register extends React.Component {
                       height: "38px",
                       backgroundColor: "transparent",
                       border: "1px solid #86c232",
+                      color: "#86c232",
                     }}
                     onClick={this.showPasswordHandler}
                   ></button>

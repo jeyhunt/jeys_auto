@@ -196,26 +196,26 @@ class Admin extends React.Component {
       }
 
       return (
-        <tr style={{ backgroundColor: "#474b4f" }}>
-          <td>{val.id}</td>
-          <td>{val.productName}</td>
-          <td>{val.price.toLocaleString()}</td>
-          <td>
+        <tr style={{ backgroundColor: "#474b4f", color: "#86c232" }}>
+          <td className="align-middle">{val.id}</td>
+          <td className="align-middle">{val.productName}</td>
+          <td className="align-middle">{val.price.toLocaleString()}</td>
+          <td className="align-middle">
             <img
               src={val.productImage}
               alt=""
               style={{ width: "240px", height: "180px", objectFit: "cover" }}
             />
           </td>
-          <td>{val.description}</td>
-          <td>{val.brand}</td>
-          <td>{val.condition}</td>
-          <td>
+          <td className="align-middle">{val.description}</td>
+          <td className="align-middle">{val.brand}</td>
+          <td className="align-middle">{val.condition}</td>
+          <td className="align-middle">
             <button onClick={() => this.editToggle(val)} className="btn">
               <i class="fas fa-edit"></i>
             </button>
           </td>
-          <td>
+          <td className="align-middle">
             <button
               onClick={() => this.deleteBtnHandler(val.id)}
               className="btn"
@@ -272,8 +272,11 @@ class Admin extends React.Component {
         <div className="row">
           <div className="col-12 text-center">
             <h1>Manage Cars</h1>
-            <table className="table mt-4">
-              <thead className="thead" style={{ backgroundColor: "#86c232" }}>
+            <table className="table table-borderless mt-4">
+              <thead
+                className="thead card-header"
+                style={{ backgroundColor: "#474b4f", color: "#86c232" }}
+              >
                 <tr>
                   <th>ID</th>
                   <th>Name</th>
@@ -286,7 +289,7 @@ class Admin extends React.Component {
                 </tr>
               </thead>
               <tbody>{this.renderProducts()}</tbody>
-              <tfoot className="bg-dark">
+              <tfoot style={{ backgroundColor: "#474b4f", color: "#86c232" }}>
                 <tr>
                   <td></td>
                   <td>

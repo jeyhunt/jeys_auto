@@ -27,15 +27,15 @@ class Login extends React.Component {
       <div className="container">
         <div className="row">
           <div className="col-12 text-center">
-            <h1>Login Now!</h1>
-            <p className="lead">Login now and start searching your rides</p>
+            <h1>Sign in Now!</h1>
+            <p className="lead">Sign in now and start searching your rides</p>
           </div>
         </div>
         <div className="row mt-5">
           <div className="col-4 offset-4">
             <div className="card">
               <div className="card-body">
-                <h5 className="font-weight-bold mb-3">Login</h5>
+                <h5 className="font-weight-bold mb-3">Sign in</h5>
                 <input
                   onChange={this.inputHandler}
                   type="text"

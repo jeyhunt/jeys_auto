@@ -4,7 +4,16 @@ import Axios from "axios";
 import { API_URL } from "../constants/api";
 import { getCartData } from "../redux/actions/cartAction";
 
+import "../assets/styles/Cart.css";
+
 class Cart extends React.Component {
+  state = {
+    isCheckoutMode: false,
+    recipientName: "",
+    address: "",
+    payment: "",
+  };
+
   deleteCartHandler = (cartId) => {
     const confirmDelete = window.confirm(`Are you sure want to delete?`);
 
@@ -22,6 +31,16 @@ class Cart extends React.Component {
     }
   };
 
+  deleteCartAfter = (cartId) => {
+    Axios.delete(`${API_URL}/carts/${cartId}`)
+      .then(() => {
+        this.props.getCartData(this.props.userGlobal.id);
+      })
+      .catch(() => {
+        alert(`terjadi kesalahan di server (Cart:39)`);
+      });
+  };
+
   renderCart = () => {
     return this.props.cartGlobal.cartList.map((val) => {
       return (
@@ -29,7 +48,11 @@ class Cart extends React.Component {
           <td className="align-middle">{val.productName}</td>
           <td className="align-middle">IDR {val.price.toLocaleString()}</td>
           <td className="align-middle">
-            <img src={val.productImage} style={{ height: "125px" }} />
+            <img
+              src={val.productImage}
+              style={{ height: "125px" }}
+              alt="productimage"
+            />
           </td>
           <td className="align-middle">{val.quantity}</td>
           <td className="align-middle">
@@ -51,14 +74,88 @@ class Cart extends React.Component {
     });
   };
 
+  renderSubtotalPrice = () => {
+    let subtotal = 0;
+
+    for (let i = 0; i < this.props.cartGlobal.cartList.length; i++) {
+      subtotal +=
+        this.props.cartGlobal.cartList[i].price *
+        this.props.cartGlobal.cartList[i].quantity;
+    }
+    return subtotal;
+  };
+
+  renderTaxFee = () => {
+    return this.renderSubtotalPrice() * 0.1;
+  };
+
+  renderTotalPrice = () => {
+    return this.renderSubtotalPrice() + this.renderTaxFee();
+  };
+
+  checkoutModeToggle = () => {
+    this.setState({ isCheckoutMode: !this.state.isCheckoutMode });
+  };
+
+  inputHandler = (event) => {
+    const { name, value } = event.target;
+
+    this.setState({ [name]: value });
+  };
+
+  payBtnHandler = () => {
+    if (this.state.payment < this.renderTotalPrice()) {
+      alert(
+        `Uang anda kurang IDR ${(
+          this.renderTotalPrice() - this.state.payment
+        ).toLocaleString()}`
+      );
+      return;
+    }
+
+    if (this.state.payment > this.renderTotalPrice()) {
+      alert(
+        `Terima kasih, kembalian anda IDR ${(
+          this.state.payment - this.renderTotalPrice()
+        ).toLocaleString()}`
+      );
+    } else if (this.state.payment === this.renderTotalPrice()) {
+      alert(`Terima kasih telah membayar dengan uang pas`);
+    }
+
+    const d = new Date();
+
+    Axios.post(`${API_URL}/transactions`, {
+      userId: this.props.userGlobal.id,
+      address: this.state.address,
+      recipientName: this.state.recipientName,
+      totalPrice: this.renderTotalPrice(),
+      totalPayment: +this.state.payment,
+      transactionDate: `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`, // DD-MM-YYYY
+      transactionItems: this.props.cartGlobal.cartList, //arr of obj -> cart
+    })
+      .then((result) => {
+        alert(`pembayaran berhasil`);
+        result.data.transactionItems.forEach((val) => {
+          this.deleteCartAfter(val.id);
+        });
+      })
+      .catch(() => {
+        alert(`terjadi kesalahan di server (cart:110)`);
+      });
+  };
+
   render() {
     return (
       <div className="p-5">
-        <div className="row">
-          <div className="col-12 text-center">
-            <h1>Cart</h1>
-            <table className="table mt-4">
-              <thead className="thead" style={{ backgroundColor: "#86c232" }}>
+        <h1>Cart</h1>
+        <div className="row mt-4">
+          <div className="col-9 text-center">
+            <table className="table table-borderless rounded">
+              <thead
+                className="thead card-header"
+                style={{ backgroundColor: "#474b4f", color: "#86c232" }}
+              >
                 <tr>
                   <th>Name</th>
                   <th>Price</th>
@@ -68,16 +165,83 @@ class Cart extends React.Component {
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody style={{ color: "#86c232" }}>{this.renderCart()}</tbody>
-              <tfoot>
+              <tbody style={{ backgroundColor: "#474b4f", color: "#86c232" }}>
+                {this.renderCart()}
+              </tbody>
+              <tfoot style={{ backgroundColor: "#474b4f", color: "#86c232" }}>
                 <tr>
                   <td colSpan="6">
-                    <button className="btn">Checkout</button>
+                    <button className="btn" onClick={this.checkoutModeToggle}>
+                      Checkout
+                    </button>
                   </td>
                 </tr>
               </tfoot>
             </table>
           </div>
+
+          {this.state.isCheckoutMode ? (
+            <div className="card col-3">
+              <div
+                className="card-header"
+                style={{ backgroundColor: "transparent" }}
+              >
+                <strong>Order Summary</strong>
+              </div>
+              <div className="card-body">
+                <div className="d-flex my-2 flex-row justify-content-between align-items-center">
+                  <span className="fw-bold">Subtotal Price</span>
+                  <span>IDR {this.renderSubtotalPrice().toLocaleString()}</span>
+                </div>
+                <div className="d-flex my-2 flex-row justify-content-between align-items-center">
+                  <span className="fw-bold">Tax Fee (10%)</span>
+                  <span>IDR {this.renderTaxFee().toLocaleString()}</span>
+                </div>
+                <hr />
+                <div className="d-flex my-2 flex-row justify-content-between align-items-center">
+                  <span className="fw-bold">Total Price</span>
+                  <span>IDR {this.renderTotalPrice().toLocaleString()}</span>
+                </div>
+              </div>
+              <hr />
+              <div className="card-body recipient">
+                <label className="mb-1" htmlFor="recipientName">
+                  Recipient Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control mb-3"
+                  name="recipientName"
+                  onChange={this.inputHandler}
+                />
+                <label className="mb-1" htmlFor="Address">
+                  Address
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="address"
+                  onChange={this.inputHandler}
+                />
+              </div>
+              <div
+                className="card-footer"
+                style={{ backgroundColor: "transparent" }}
+              >
+                <div className="d-flex flex-row justify-content-between align-items-center">
+                  <input
+                    type="number"
+                    className="form-control nomer"
+                    name="payment"
+                    onChange={this.inputHandler}
+                  />
+                  <button onClick={this.payBtnHandler} className="btn ms-1">
+                    Pay
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
     );
