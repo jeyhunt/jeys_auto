@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { registerUser } from "../../redux/actions/user";
 import { connect } from "react-redux";
 
@@ -16,6 +16,8 @@ class Register extends React.Component {
     password: "",
     passwordError: false,
     role: "",
+
+    toggleEyePassword: false,
   };
 
   inputHandler = (event) => {
@@ -82,9 +84,14 @@ class Register extends React.Component {
     } else {
       show.type = "password";
     }
+
+    this.setState({ toggleEyePassword: !this.state.toggleEyePassword });
   };
 
   render() {
+    if (this.props.userGlobal.id) {
+      return <Navigate to="/" />;
+    }
     return (
       <div className="container">
         <div className="row">
@@ -151,7 +158,11 @@ class Register extends React.Component {
                     style={{ color: "#61892f" }}
                   />
                   <button
-                    className="btn far fa-eye"
+                    className={
+                      this.state.toggleEyePassword
+                        ? "btn far fa-eye"
+                        : "btn far fa-eye-slash"
+                    }
                     style={{
                       height: "38px",
                       backgroundColor: "transparent",
@@ -194,8 +205,10 @@ class Register extends React.Component {
   }
 }
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = (state) => {
+  return {
+    userGlobal: state.user,
+  };
 };
 
 const mapDispatchToProps = {

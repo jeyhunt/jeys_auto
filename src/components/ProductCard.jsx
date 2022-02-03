@@ -28,15 +28,20 @@ class ProductCard extends React.Component {
           <Card.Text style={{ color: "#86c232" }}>
             IDR {this.props.productData.price.toLocaleString()}
           </Card.Text>
-          <Card.Text className="fst-italic text-muted">
+          {/* <Card.Text className="fst-italic text-muted">
             {this.props.productData.description}
-          </Card.Text>
-          <Button
-            className="btn"
-            style={{ backgroundColor: "#86c232", color: "#222629" }}
+          </Card.Text> */}
+          <Link
+            to={`/product-detail?${this.props.productData.id}`}
+            style={{ textDecoration: "none" }}
           >
-            Details
-          </Button>
+            <Button
+              className="btn"
+              style={{ backgroundColor: "#86c232", color: "#222629" }}
+            >
+              Details
+            </Button>
+          </Link>
         </Card.Body>
       </Card>
     );

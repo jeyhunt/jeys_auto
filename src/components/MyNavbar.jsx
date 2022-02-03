@@ -1,6 +1,7 @@
 import Button from "@restart/ui/esm/Button";
 import React from "react";
 import logo from "../assets/images/logojey.png";
+import { Navigate } from "react-router-dom";
 
 import { Navbar, NavbarBrand, NavItem, Nav, Dropdown } from "react-bootstrap";
 
@@ -59,12 +60,16 @@ class MyNavbar extends React.Component {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className="dropdown-menu">
-                    <Dropdown.Item className="dropdown-isi" href="/cart">
-                      Cart ({this.props.cartGlobal.cartList.length})
-                    </Dropdown.Item>
-                    <Dropdown.Item className="dropdown-isi" href="/history">
-                      History
-                    </Dropdown.Item>
+                    {this.props.userGlobal.role === "admin" ? null : (
+                      <Dropdown.Item className="dropdown-isi" href="/cart">
+                        Cart ({this.props.cartGlobal.cartList.length})
+                      </Dropdown.Item>
+                    )}
+                    {this.props.userGlobal.role === "admin" ? null : (
+                      <Dropdown.Item className="dropdown-isi" href="/history">
+                        History
+                      </Dropdown.Item>
+                    )}
                     {this.props.userGlobal.role === "admin" ? (
                       <Dropdown.Item className="dropdown-isi" href="/admin">
                         Admin
@@ -88,7 +93,7 @@ class MyNavbar extends React.Component {
                 {/* <Button className="custom-btn-login btn me-2" href="/login">
                   Sign In
                 </Button> */}
-                <Button className="custom-btn-regis btn " href="/login">
+                <Button className="custom-btn-regis btn" href="/login">
                   Sign In
                 </Button>
               </NavItem>

@@ -53,51 +53,6 @@
       "password": "password",
       "role": "user",
       "id": 6
-    },
-    {
-      "firstName": "jeytes",
-      "lastName": "tesjey",
-      "username": "jeytesjey12",
-      "email": "jeytesjey12@gmail.com",
-      "password": "P4ssw0rD!",
-      "role": "user",
-      "id": 7
-    },
-    {
-      "firstName": "jey",
-      "lastName": "purwadhika",
-      "username": "jeypurwadhika",
-      "email": "jeypurwadhika@purwadhika.com",
-      "password": "P4ssw0rD!",
-      "role": "user",
-      "id": 8
-    },
-    {
-      "firstName": "",
-      "lastName": "",
-      "username": "",
-      "email": "asdawdawd",
-      "password": "asdawdawdasd",
-      "role": "user",
-      "id": 9
-    },
-    {
-      "firstName": "jey",
-      "lastName": "buyer",
-      "username": "jeybuyer",
-      "email": "jeybuyer@mail.com",
-      "password": "J3yBuyer!",
-      "role": "user",
-      "id": 10
-    },
-    {
-      "firstName": "Arthur",
-      "lastName": "Morgan",
-      "username": "blacklung",
-      "email": "arthur_morgan@mail.com",
-      "password": "Bl4ckLung!",
-      "role": "user",
-      "id": 11
     }
   ],
   "products": [
@@ -291,7 +246,7 @@
       "id": 21
     },
     {
-      "productName": "Toyota GR86 2022",
+      "productName": "Toyota GR86 Premium 2022",
       "price": 1300000000,
       "productImage": "https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1617700316/je52xqczryuucbviwonm.png",
       "description": "All New Toyota GR 86 2022 Red, Engine: 1998cc Flat4 DOHC, Power: 228hp, Free 3 Years Service*",
@@ -300,7 +255,7 @@
       "id": 22
     },
     {
-      "productName": "BMW M8 Grand Coupe2020",
+      "productName": "BMW M8 Grand Coupe 2020",
       "price": 2300000000,
       "productImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/BMW_M8_Gran_Coupe_Competition_IMG_3373.jpg/1280px-BMW_M8_Gran_Coupe_Competition_IMG_3373.jpg",
       "description": "BMW M8 Grand Coupe 2020 Grey, Engine: DOHC 5998cc V8 32V, Power: 617Hp, Very Good Condition, Reasonable KM, 1 Month Engine & Transmision Warranty",
@@ -309,65 +264,6 @@
       "id": 23
     }
   ],
-  "transactions": [
-    {
-      "userId": 6,
-      "address": "fulham rd chelsea",
-      "recipientName": "mason mount",
-      "totalPrice": 2172500000,
-      "totalPayment": 2200000000,
-      "transactionDate": "1-2-2022",
-      "transactionItems": [
-        {
-          "userID": 6,
-          "productId": 12,
-          "price": 700000000,
-          "productName": "Toyota Yaris GR 2022",
-          "productImage": "https://media.suara.com/pictures/653x366/2021/08/19/67957-toyota-gr-yaris-02.jpg",
-          "quantity": 1,
-          "id": 1
-        },
-        {
-          "userID": 6,
-          "productId": 16,
-          "price": 1275000000,
-          "productName": "Mercedes-Benz E 300 AMG 2022",
-          "productImage": "https://www.autocar.co.uk/sites/autocar.co.uk/files/images/car-reviews/first-drives/legacy/18c0838_114_0.jpg",
-          "quantity": 1,
-          "id": 2
-        }
-      ],
-      "id": 1
-    },
-    {
-      "userId": 6,
-      "address": "chelsea",
-      "recipientName": "mason",
-      "totalPrice": 880000000,
-      "totalPayment": 900000000,
-      "transactionDate": "1-2-2022",
-      "transactionItems": [
-        {
-          "userID": 6,
-          "productId": 2,
-          "price": 500000000,
-          "productName": "Toyota Fortuner GR Sport 2022",
-          "productImage": "https://asset.kompas.com/crops/31KOCk_Rh0YP32Vgmnp8_ZwCneI=/81x0:711x420/750x500/data/photo/2021/08/30/612bc12fed98c.png",
-          "quantity": 1,
-          "id": 1
-        },
-        {
-          "userID": 6,
-          "productId": 3,
-          "price": 300000000,
-          "productName": "Mitsubishi Pajero Sport Dakar 2016",
-          "productImage": "https://otodriver.com/image/load/749/421/gallery/mitsubishi-all-new-pajero-sport-dakar-panning3525.jpg",
-          "quantity": 1,
-          "id": 2
-        }
-      ],
-      "id": 2
-    }
-  ],
+  "transactions": [],
   "carts": []
 }

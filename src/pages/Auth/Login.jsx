@@ -10,6 +10,8 @@ class Login extends React.Component {
   state = {
     username: "",
     password: "",
+
+    toggleEyePassword: false,
   };
 
   inputHandler = (event) => {
@@ -17,6 +19,18 @@ class Login extends React.Component {
     const name = event.target.name;
 
     this.setState({ [name]: value });
+  };
+
+  showPasswordHandler = () => {
+    const show = document.getElementById("pass");
+
+    if (show.type === "password") {
+      show.type = "text";
+    } else {
+      show.type = "password";
+    }
+
+    this.setState({ toggleEyePassword: !this.state.toggleEyePassword });
   };
 
   render() {
@@ -43,13 +57,31 @@ class Login extends React.Component {
                   placeholder="Username"
                   className="form-control my-2"
                 />
-                <input
-                  onChange={this.inputHandler}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className="form-control my-2"
-                />
+                <div className="input-group my-2">
+                  <input
+                    onChange={this.inputHandler}
+                    name="password"
+                    id="pass"
+                    type="password"
+                    placeholder="Password"
+                    className="shadow-none form-control"
+                    style={{ color: "#61892f" }}
+                  />
+                  <button
+                    className={
+                      this.state.toggleEyePassword
+                        ? "btn far fa-eye"
+                        : "btn far fa-eye-slash"
+                    }
+                    style={{
+                      height: "38px",
+                      backgroundColor: "transparent",
+                      border: "1px solid #86c232",
+                      color: "#86c232",
+                    }}
+                    onClick={this.showPasswordHandler}
+                  ></button>
+                </div>
                 <div className="butt d-flex flex-row justify-content-between align-items-end">
                   <button
                     onClick={() => this.props.loginUser(this.state)}

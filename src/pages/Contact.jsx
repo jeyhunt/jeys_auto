@@ -25,16 +25,12 @@ class Contact extends React.Component {
               alt="jey's auto logo"
             />
             <div class="section-title-container">
-              <p>Jakarta's most finest luxury car dealer founded in 2022</p>
+              <p>Selling Cars With Good Standard</p>
             </div>
             <div class="contact-items-container text-center">
               <div class="contact-item">
                 <h6>Address</h6>
-                <p>
-                  Jl. Jenderal Sudirman No.Kav. 21, RT.10/RW.1, Kuningan, Karet,
-                  Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus
-                  Ibukota Jakarta 12930
-                </p>
+                <p>Jl. Jalan No. 1 South Jakarta</p>
               </div>
               <div class="contact-item">
                 <h6>Email</h6>

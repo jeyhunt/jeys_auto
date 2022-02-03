@@ -117,11 +117,9 @@ class Buy extends React.Component {
 
   resetBtnHandler = () => {
     this.fetchProducts();
-    this.setState({
-      searchProductName: "",
-      searchBrand: "",
-      searchCondition: "",
-    });
+    document.getElementById("reset").value = "";
+    document.getElementById("reset-brand").value = "";
+    document.getElementById("reset-condition").value = "";
   };
 
   componentDidMount() {
@@ -143,12 +141,14 @@ class Buy extends React.Component {
                 type="text"
                 name="searchProductName"
                 className="form-control mb-3"
+                id="reset"
               />
               <label htmlFor="searchBrand">Brand</label>
               <select
                 onChange={this.inputHandler}
                 name="searchBrand"
                 className="form-control mb-3"
+                id="reset-brand"
               >
                 <option value="">All Brand</option>
                 <option value="bmw">BMW</option>
@@ -162,6 +162,7 @@ class Buy extends React.Component {
                 onChange={this.inputHandler}
                 name="searchCondition"
                 className="form-control"
+                id="reset-condition"
               >
                 <option value="">All Condition</option>
                 <option value="baru">Baru</option>

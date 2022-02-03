@@ -5,6 +5,9 @@ import { API_URL } from "../constants/api";
 import { getCartData } from "../redux/actions/cartAction";
 
 import "../assets/styles/Cart.css";
+import { Navigate, useNavigate } from "react-router";
+
+import swal from "sweetalert";
 
 class Cart extends React.Component {
   state = {
@@ -12,6 +15,9 @@ class Cart extends React.Component {
     recipientName: "",
     address: "",
     payment: "",
+
+    payBtn: true,
+    payDone: false,
   };
 
   deleteCartHandler = (cartId) => {
@@ -42,6 +48,10 @@ class Cart extends React.Component {
   };
 
   renderCart = () => {
+    if (this.props.cartGlobal.cartList === "0") {
+      return <Navigate to="/history" />;
+    }
+
     return this.props.cartGlobal.cartList.map((val) => {
       return (
         <tr>
@@ -101,6 +111,9 @@ class Cart extends React.Component {
     const { name, value } = event.target;
 
     this.setState({ [name]: value });
+
+    this.disabledPayBtn();
+    console.log(this.state);
   };
 
   payBtnHandler = () => {
@@ -131,7 +144,9 @@ class Cart extends React.Component {
       recipientName: this.state.recipientName,
       totalPrice: this.renderTotalPrice(),
       totalPayment: +this.state.payment,
-      transactionDate: `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`, // DD-MM-YYYY
+      transactionDate: `${d.getDate()}-${
+        d.getMonth() + 1
+      }-${d.getFullYear()} | ${d.getHours()}:${d.getMinutes()}`, // DD-MM-YYYY | HH:MM
       transactionItems: this.props.cartGlobal.cartList, //arr of obj -> cart
     })
       .then((result) => {
@@ -139,13 +154,36 @@ class Cart extends React.Component {
         result.data.transactionItems.forEach((val) => {
           this.deleteCartAfter(val.id);
         });
+        this.setState({ payDone: true });
       })
       .catch(() => {
         alert(`terjadi kesalahan di server (cart:110)`);
       });
   };
 
+  disabledPayBtn = () => {
+    if (
+      this.state.recipientName !== "" &&
+      this.state.address !== "" &&
+      this.state.payment !== ""
+    ) {
+      this.setState({ payBtn: false });
+      console.log(this.state.payBtn);
+    }
+  };
+
   render() {
+    if (this.props.userGlobal.role !== "user") {
+      swal({
+        title: "Admin tidak memiliki akses halaman Cart",
+        icon: "error",
+      });
+      return <Navigate to="/" />;
+    }
+
+    if (this.state.payDone) {
+      return <Navigate to="/history" />;
+    }
     return (
       <div className="p-5">
         <h1>Cart</h1>
@@ -212,7 +250,8 @@ class Cart extends React.Component {
                   type="text"
                   className="form-control mb-3"
                   name="recipientName"
-                  onChange={this.inputHandler}
+                  onInput={this.inputHandler}
+                  id="needed"
                 />
                 <label className="mb-1" htmlFor="Address">
                   Address
@@ -222,6 +261,7 @@ class Cart extends React.Component {
                   className="form-control"
                   name="address"
                   onChange={this.inputHandler}
+                  id="needed"
                 />
               </div>
               <div
@@ -234,10 +274,26 @@ class Cart extends React.Component {
                     className="form-control nomer"
                     name="payment"
                     onChange={this.inputHandler}
+                    id="needed"
                   />
-                  <button onClick={this.payBtnHandler} className="btn ms-1">
-                    Pay
-                  </button>
+                  {this.state.payBtn === false ? (
+                    <button
+                      onClick={this.payBtnHandler}
+                      className="btn ms-1"
+                      id="pay"
+                    >
+                      Pay
+                    </button>
+                  ) : (
+                    <button
+                      onClick={this.payBtnHandler}
+                      className="btn ms-1"
+                      id="pay"
+                      disabled
+                    >
+                      Pay
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

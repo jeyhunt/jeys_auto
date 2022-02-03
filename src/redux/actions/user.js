@@ -1,5 +1,8 @@
 import Axios from "axios";
 import { API_URL } from "../../constants/api";
+import { Navigate } from "react-router-dom";
+
+import swal from "sweetalert";
 
 export const registerUser = ({
   firstName,
@@ -18,12 +21,17 @@ export const registerUser = ({
       role: "user",
     })
       .then((result) => {
+        console.log(result.data);
         delete result.data.password;
+        localStorage.setItem("userDataEmmerce", JSON.stringify(result.data));
         dispatch({
           type: "USER_LOGIN",
           payload: result.data,
         });
-        alert(`berhasil mendaftarkan user`);
+        swal({
+          text: `berhasil mendaftarkan user`,
+          icon: "success",
+        });
       })
       .catch(() => {
         alert(`gagal mendaftarkan user`);
@@ -39,7 +47,7 @@ export const loginUser = ({ username, password }) => {
       },
     })
       .then((result) => {
-        // console.log(result.data);
+        // console.log(result.data[0]);
         if (result.data.length) {
           if (password === result.data[0].password) {
             delete result.data[0].password;
@@ -74,6 +82,7 @@ export const loginUser = ({ username, password }) => {
 
 export const logoutUser = () => {
   localStorage.removeItem("userDataEmmerce");
+  <Navigate to="/" />;
 
   return {
     type: "USER_LOGOUT",

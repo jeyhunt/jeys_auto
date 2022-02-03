@@ -4,6 +4,7 @@ import { API_URL } from "../constants/api";
 import { connect } from "react-redux";
 import { getCartData } from "../redux/actions/cartAction";
 import { Navigate } from "react-router-dom";
+import swal from "sweetalert";
 
 import "../assets/styles/ProductDetail.css";
 
@@ -90,6 +91,12 @@ class ProductDetail extends React.Component {
     // console.log(this.state);
 
     if (this.props.userGlobal.role !== "user") {
+      swal({
+        text: "Anda tidak memiliki akses ke halaman ini",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+      });
       return <Navigate to="/login" />;
     }
 

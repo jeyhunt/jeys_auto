@@ -8,11 +8,21 @@ import { getCartData } from "../redux/actions/cartAction";
 
 import "../assets/styles/ProductCardBuy.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import swal from "sweetalert";
 
 class ProductCardBuy extends React.Component {
   addToCartHandler = () => {
-    // cek user sudah ada barang tsb di cart
+    // cek role admin apa user
+    if (this.props.userGlobal.role !== "user") {
+      return swal({
+        text: "Anda tidak dapat membeli barang",
+        icon: "error",
+        buttons: false,
+        timer: 1000,
+      });
+    }
     Axios.get(`${API_URL}/carts`, {
+      // cek user sudah ada barang tsb di cart
       params: {
         userId: this.props.userGlobal.id,
         productId: this.props.productData.id,
@@ -24,7 +34,12 @@ class ProductCardBuy extends React.Component {
           quantity: result.data[0].quantity + 1,
         })
           .then(() => {
-            alert(`Berhasil menambahkan barang`);
+            swal({
+              text: "Berhasil menambahkan barang",
+              buttons: false,
+              timer: 1500,
+              icon: "success",
+            });
             this.props.getCartData(this.props.userGlobal.id);
           })
           .catch(() => {
@@ -41,7 +56,12 @@ class ProductCardBuy extends React.Component {
           quantity: 1,
         })
           .then(() => {
-            alert(`Berhasil menambahkan barang`);
+            swal({
+              text: "Berhasil menambahkan barang",
+              buttons: false,
+              timer: 1500,
+              icon: "success",
+            });
             this.props.getCartData(this.props.userGlobal.id);
           })
           .catch(() => {
@@ -68,12 +88,15 @@ class ProductCardBuy extends React.Component {
                 to={`/product-detail?${this.props.productData.id}`}
                 style={{ textDecoration: "none" }}
               >
-                <h5 class="card-title">{this.props.productData.productName}</h5>
+                <h5 class="card-title fw-bold">
+                  {this.props.productData.productName}
+                </h5>
               </Link>
-              <p class="card-text">
+              <hr />
+              <p class="card-text" style={{ marginBottom: "-1px" }}>
                 IDR {this.props.productData.price.toLocaleString()}
               </p>
-              <p class="card-text">
+              <p class="card-text fst-italic">
                 <small class="text-muted">
                   {this.props.productData.description}
                 </small>

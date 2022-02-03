@@ -3,6 +3,7 @@ import Axios from "axios";
 import { API_URL } from "../constants/api";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
+import swal from "sweetalert";
 
 import "../assets/styles/Admin.css";
 
@@ -28,6 +29,10 @@ class Admin extends React.Component {
     page: 1,
     maxPage: 0,
     itemPerPage: 5,
+
+    searchProductName: "",
+    searchCondition: "",
+    sortBy: "",
   };
 
   fetchProducts = () => {
@@ -39,7 +44,10 @@ class Admin extends React.Component {
         });
       })
       .catch(() => {
-        alert(`Terjadi kesalahan di server`);
+        swal({
+          text: "terjadi kesalahan di server (Admin:48)",
+          icon: "error",
+        });
       });
   };
 
@@ -73,7 +81,10 @@ class Admin extends React.Component {
         this.cancelEdit();
       })
       .catch(() => {
-        alert(`Terjadi kesalahan di server`);
+        swal({
+          text: "terjadi kesalahan di server (Admin:85)",
+          icon: "error",
+        });
       });
   };
 
@@ -87,7 +98,10 @@ class Admin extends React.Component {
           this.fetchProducts();
         })
         .catch(() => {
-          alert(`Terjadi kesalahan di server`);
+          swal({
+            text: "terjadi kesalahan di server (Admin:102)",
+            icon: "error",
+          });
         });
     } else {
       alert(`Delete Canceled`);
@@ -272,6 +286,53 @@ class Admin extends React.Component {
         <div className="row">
           <div className="col-12 text-center">
             <h1>Manage Cars</h1>
+            <div className="card">
+              <div className="card-body ">
+                <label htmlFor="searchProductName">Product Name</label>
+                <input
+                  type="text"
+                  name="searchProductName"
+                  className="form-control mb-3"
+                  id="reset"
+                  placeholder="Product Name"
+                />
+                <label htmlFor="searchBrand">Brand</label>
+                <select
+                  onChange={this.inputHandler}
+                  name="searchBrand"
+                  className="form-control mb-3"
+                  id="reset-brand"
+                >
+                  <option value="">All Brand</option>
+                  <option value="bmw">BMW</option>
+                  <option value="mercedes">Mercedes-Benz</option>
+                  <option value="mitsubishi">Mitsubishi</option>
+                  <option value="tesla">Tesla</option>
+                  <option value="toyota">Toyota</option>
+                </select>
+                <label htmlFor="searchCondition">Condition</label>
+                <select
+                  onChange={this.inputHandler}
+                  name="searchCondition"
+                  className="form-control"
+                  id="reset-condition"
+                >
+                  <option value="">All Condition</option>
+                  <option value="baru">Baru</option>
+                  <option value="bekas">Bekas</option>
+                </select>
+                <button onClick={this.searchBtnHandler} className="btn mt-3">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button
+                  onClick={this.resetBtnHandler}
+                  className="reset btn mt-3 ms-5"
+                  style={{ backgroundColor: "transparent", color: "#86c232" }}
+                >
+                  Reset Filter
+                </button>
+              </div>
+            </div>
             <table className="table table-borderless mt-4">
               <thead
                 className="thead card-header"

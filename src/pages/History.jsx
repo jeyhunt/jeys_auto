@@ -2,6 +2,9 @@ import React from "react";
 import Axios from "axios";
 import { API_URL } from "../constants/api";
 import { connect } from "react-redux";
+import { Navigate } from "react-router";
+
+import swal from "sweetalert";
 
 class History extends React.Component {
   state = {
@@ -66,26 +69,36 @@ class History extends React.Component {
   }
 
   render() {
+    if (this.props.userGlobal.role !== "user") {
+      swal({
+        title: "Admin tidak memiliki akses halaman History",
+        icon: "error",
+      });
+      return <Navigate to="/" />;
+    }
     return (
       <div className="p-5">
         <h1>Transaction History</h1>
         <div className="row mt-3">
-          <div className="col-8">
+          <div className="col-7">
             <table className="table table-borderless">
               <thead style={{ backgroundColor: "#474b4f", color: "#86c232" }}>
                 <tr>
-                  <th>Transaction Date</th>
-                  <th>Total Items</th>
-                  <th>Total Price</th>
-                  <th>Action</th>
+                  <th className="text-center">Transaction Date</th>
+                  <th className="text-center">Total Items</th>
+                  <th className="text-center">Total Price</th>
+                  <th className="text-center">Action</th>
                 </tr>
               </thead>
-              <tbody style={{ backgroundColor: "#474b4f", color: "#86c232" }}>
+              <tbody
+                className="text-center"
+                style={{ backgroundColor: "#474b4f", color: "#86c232" }}
+              >
                 {this.renderTransactions()}
               </tbody>
             </table>
           </div>
-          <div className="col-4">
+          <div className="col-5">
             {this.state.transactionDetails.length ? (
               <div className="card">
                 <div className="card-header">
