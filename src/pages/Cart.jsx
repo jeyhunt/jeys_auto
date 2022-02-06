@@ -5,7 +5,7 @@ import { API_URL } from "../constants/api";
 import { getCartData } from "../redux/actions/cartAction";
 
 import "../assets/styles/Cart.css";
-import { Navigate, useNavigate } from "react-router";
+import { Navigate } from "react-router";
 
 import swal from "sweetalert";
 

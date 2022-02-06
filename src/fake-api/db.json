@@ -265,5 +265,15 @@
     }
   ],
   "transactions": [],
-  "carts": []
+  "carts": [
+    {
+      "userID": 6,
+      "productId": 1,
+      "price": 860000000,
+      "productName": "Mercedes-Benz CLA 200 AMG 2022",
+      "productImage": "https://pbs.twimg.com/media/EQ_HrKsWoAU_a2k.jpg",
+      "quantity": 1,
+      "id": 1
+    }
+  ]
 }

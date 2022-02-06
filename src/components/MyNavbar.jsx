@@ -1,7 +1,6 @@
 import Button from "@restart/ui/esm/Button";
 import React from "react";
 import logo from "../assets/images/logojey.png";
-import { Navigate } from "react-router-dom";
 
 import { Navbar, NavbarBrand, NavItem, Nav, Dropdown } from "react-bootstrap";
 
